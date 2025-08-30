@@ -1,18 +1,20 @@
 # Titus Engine
 
-Simple overview of use/purpose.
+My custom game engine built in C++ using OpenGL for rendering.
 
-## Description
+## Specifications
 
-An in-depth paragraph about your project and overview of use.
+### Dependencies
+* [@Premake](https://github.com/premake/premake-core)
+* [@spdlog](https://github.com/gabime/spdlog)
 
-## Authors
+## Author
 
 * [@GrahamBrown](https://www.linkedin.com/in/gmbrown224/)
 
 ## License
 
-This project is licensed under the Apache License Version 2.0 - see the LICENSE.md file for details
+This project is licensed under the Apache License Version 2.0
 
 ## Acknowledgments
 
