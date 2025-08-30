@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Core.h"
+#include "Events/Event.h"
+#include "Events/ApplicationEvent.h"
+#include "Logging/Log.h"
 
 namespace Titus
 {

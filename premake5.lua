@@ -25,6 +25,9 @@ project "Titus-Engine"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("obj/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "TEpch.h"
+	pchsource "Titus-Engine/src/TEpch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -33,6 +36,7 @@ project "Titus-Engine"
 
 	includedirs
 	{
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 

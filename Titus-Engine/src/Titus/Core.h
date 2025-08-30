@@ -1,5 +1,7 @@
 #pragma once
 
+#include "TEpch.h"
+
 #ifdef TE_PLATFORM_WINDOWS
 	#ifdef TE_BUILD_DLL
 		#define TITUS_API _declspec(dllexport)
@@ -9,3 +11,5 @@
 #else
 	#error Titus only supports Windows!
 #endif
+
+#define BIT(x) (1 << x)

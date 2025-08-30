@@ -3,7 +3,7 @@
 // For use by Titus applications
 
 #include "Titus/Application.h"
-#include "Titus/Log.h"
+#include "Titus/Logging/Log.h"
 
 // Entry Point
 #include "Titus/EntryPoint.h"

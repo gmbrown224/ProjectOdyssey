@@ -4,8 +4,15 @@
     <Filter Include="Titus">
       <UniqueIdentifier>{3E9B2A0E-AAAF-52BF-7331-F61EDF044FF0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Titus\Events">
+      <UniqueIdentifier>{6275351A-4ED8-C4BE-F75D-FD74E39F9041}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Titus\Logging">
+      <UniqueIdentifier>{D4D9876B-409A-03A2-09D5-4C1F7554487E}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\TEpch.h" />
     <ClInclude Include="src\Titus.h" />
     <ClInclude Include="src\Titus\Application.h">
       <Filter>Titus</Filter>
@@ -16,16 +23,29 @@
     <ClInclude Include="src\Titus\EntryPoint.h">
       <Filter>Titus</Filter>
     </ClInclude>
-    <ClInclude Include="src\Titus\Log.h">
-      <Filter>Titus</Filter>
+    <ClInclude Include="src\Titus\Events\ApplicationEvent.h">
+      <Filter>Titus\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Titus\Events\Event.h">
+      <Filter>Titus\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Titus\Events\KeyEvent.h">
+      <Filter>Titus\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Titus\Events\MouseEvent.h">
+      <Filter>Titus\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Titus\Logging\Log.h">
+      <Filter>Titus\Logging</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\TEpch.cpp" />
     <ClCompile Include="src\Titus\Application.cpp">
       <Filter>Titus</Filter>
     </ClCompile>
-    <ClCompile Include="src\Titus\Log.cpp">
-      <Filter>Titus</Filter>
+    <ClCompile Include="src\Titus\Logging\Log.cpp">
+      <Filter>Titus\Logging</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
