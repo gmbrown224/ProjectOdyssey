@@ -15,6 +15,12 @@ workspace "Titus-Engine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Titus-Engine/vendor/GLFW/include"
+
+include "Titus-Engine/vendor/GLFW"
+
 -- Build Engine Project
 
 project "Titus-Engine"
@@ -37,7 +43,14 @@ project "Titus-Engine"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links 
+	{ 
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	buildoptions
@@ -53,6 +66,7 @@ project "Titus-Engine"
 		defines
 		{
 			"TE_PLATFORM_WINDOWS",
+			"TE_ENABLE_ASSERTS",
 			"TE_BUILD_DLL",
 			"_WINDLL"
 		}

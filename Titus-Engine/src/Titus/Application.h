@@ -4,6 +4,7 @@
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
 #include "Logging/Log.h"
+#include "Window.h"
 
 namespace Titus
 {
@@ -14,6 +15,9 @@ namespace Titus
 		virtual ~Application();
 
 		void Run();
+	private:
+		std::unique_ptr<Window> m_Window;
+		bool m_Running = true;
 	};
 
 	// To be defined in the client

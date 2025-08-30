@@ -442,6 +442,8 @@ fabric.properties
 
 ##### Eclipse
 .metadata
+vendor/bin
+vendor/bin-int
 bin/
 bin-int/
 tmp/

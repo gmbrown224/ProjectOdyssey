@@ -1,26 +1,24 @@
 #include "TEpch.h"
 #include "Application.h"
+#include "GLFW/glfw3.h"
 
 namespace Titus
 {
-	Application::Application() { }
+	Application::Application() 
+	{
+		m_Window = std::unique_ptr<Window>(Window::Create());
+	}
 
 	Application::~Application() { }
 
 	void Application::Run()
 	{
-		WindowResizeEvent e(1280, 720);
-
-		if (e.IsInCategory(EventCategoryApplication))
+		while (m_Running)
 		{
-			APP_TRACE("Event category is application");
-		}
+			glClearColor(.75f, .75f, .75f, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
 
-		if (e.IsInCategory(EventCategoryInput))
-		{
-			APP_TRACE("Event category is input");
+			m_Window->OnUpdate();
 		}
-
-		while (true);
 	}
 }
