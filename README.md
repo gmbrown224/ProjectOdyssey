@@ -7,6 +7,8 @@ My custom game engine built in C++ using OpenGL for rendering.
 ### Dependencies
 * [@Premake](https://github.com/premake/premake-core)
 * [@spdlog](https://github.com/gabime/spdlog)
+* [@GLFW](https://github.com/glfw/glfw)
+* [@Glad](https://glad.dav1d.de/)
 
 ## Author
 
