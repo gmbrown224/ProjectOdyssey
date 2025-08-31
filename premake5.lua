@@ -18,8 +18,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Titus-Engine/vendor/GLFW/include"
+IncludeDir["GLAD"] = "Titus-Engine/vendor/GLAD/include"
 
 include "Titus-Engine/vendor/GLFW"
+include "Titus-Engine/vendor/GLAD"
 
 -- Build Engine Project
 
@@ -44,18 +46,21 @@ project "Titus-Engine"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.GLAD}"
 	}
 
 	links 
 	{ 
 		"GLFW",
+		"GLAD",
 		"opengl32.lib"
 	}
 
 	buildoptions
 	{
-		"/utf-8"
+		"/utf-8",
+		"/MD"
 	}
 
 	filter "system:windows"
@@ -68,6 +73,7 @@ project "Titus-Engine"
 			"TE_PLATFORM_WINDOWS",
 			"TE_ENABLE_ASSERTS",
 			"TE_BUILD_DLL",
+			"GLFW_INCLUDE_NONE",
 			"_WINDLL"
 		}
 
@@ -117,7 +123,8 @@ project "Sandbox"
 
 	buildoptions
 	{
-		"/utf-8"
+		"/utf-8",
+		"/MD"
 	}
 
 	filter "system:windows"

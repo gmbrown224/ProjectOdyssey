@@ -13,6 +13,9 @@
     <Filter Include="Titus\Events">
       <UniqueIdentifier>{6275351A-4ED8-C4BE-F75D-FD74E39F9041}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Titus\Layers">
+      <UniqueIdentifier>{3D601829-29C3-A7CD-D248-E083BE8A7350}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Titus\Logging">
       <UniqueIdentifier>{D4D9876B-409A-03A2-09D5-4C1F7554487E}</UniqueIdentifier>
     </Filter>
@@ -44,6 +47,12 @@
     <ClInclude Include="src\Titus\Events\MouseEvent.h">
       <Filter>Titus\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Titus\Layers\Layer.h">
+      <Filter>Titus\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Titus\Layers\LayerStack.h">
+      <Filter>Titus\Layers</Filter>
+    </ClInclude>
     <ClInclude Include="src\Titus\Logging\Log.h">
       <Filter>Titus\Logging</Filter>
     </ClInclude>
@@ -58,6 +67,12 @@
     <ClCompile Include="src\TEpch.cpp" />
     <ClCompile Include="src\Titus\Application.cpp">
       <Filter>Titus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Titus\Layers\Layer.cpp">
+      <Filter>Titus\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Titus\Layers\LayerStack.cpp">
+      <Filter>Titus\Layers</Filter>
     </ClCompile>
     <ClCompile Include="src\Titus\Logging\Log.cpp">
       <Filter>Titus\Logging</Filter>
