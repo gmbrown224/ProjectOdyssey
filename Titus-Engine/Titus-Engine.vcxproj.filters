@@ -59,6 +59,12 @@
     <ClInclude Include="src\Titus\Window.h">
       <Filter>Titus</Filter>
     </ClInclude>
+    <ClInclude Include="vendor\imgui\imconfig.h" />
+    <ClInclude Include="vendor\imgui\imgui.h" />
+    <ClInclude Include="vendor\imgui\imgui_internal.h" />
+    <ClInclude Include="vendor\imgui\imstb_rectpack.h" />
+    <ClInclude Include="vendor\imgui\imstb_textedit.h" />
+    <ClInclude Include="vendor\imgui\imstb_truetype.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
@@ -77,5 +83,19 @@
     <ClCompile Include="src\Titus\Logging\Log.cpp">
       <Filter>Titus\Logging</Filter>
     </ClCompile>
+    <ClCompile Include="vendor\imgui\imgui.cpp" />
+    <ClCompile Include="vendor\imgui\imgui_demo.cpp" />
+    <ClCompile Include="vendor\imgui\imgui_draw.cpp" />
+    <ClCompile Include="vendor\imgui\imgui_tables.cpp" />
+    <ClCompile Include="vendor\imgui\imgui_widgets.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vendor\imgui\premake5.lua" />
+    <None Include="vendor\imgui\.editorconfig" />
+    <None Include="vendor\imgui\.gitattributes" />
+    <None Include="vendor\imgui\.gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="vendor\imgui\LICENSE.txt" />
   </ItemGroup>
 </Project>

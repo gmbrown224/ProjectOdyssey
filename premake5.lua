@@ -17,11 +17,16 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLFW"] = "Titus-Engine/vendor/GLFW/include"
 IncludeDir["GLAD"] = "Titus-Engine/vendor/GLAD/include"
+IncludeDir["GLFW"] = "Titus-Engine/vendor/GLFW/include"
+IncludeDir["imgui"] = "Titus-Engine/vendor/imgui"
 
-include "Titus-Engine/vendor/GLFW"
-include "Titus-Engine/vendor/GLAD"
+group "Dependencies"
+	include "Titus-Engine/vendor/GLAD"
+	include "Titus-Engine/vendor/GLFW"
+	include "Titus-Engine/vendor/imgui"
+
+group ""
 
 -- Build Engine Project
 
@@ -45,15 +50,17 @@ project "Titus-Engine"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLAD}",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.GLAD}"
+		"%{IncludeDir.imgui}",
+		"%{prj.name}/vendor/spdlog/include"
 	}
 
 	links 
 	{ 
-		"GLFW",
 		"GLAD",
+		"GLFW",
+		"imgui",
 		"opengl32.lib"
 	}
 
@@ -70,10 +77,10 @@ project "Titus-Engine"
 
 		defines
 		{
+			"GLFW_INCLUDE_NONE",
 			"TE_PLATFORM_WINDOWS",
 			"TE_ENABLE_ASSERTS",
 			"TE_BUILD_DLL",
-			"GLFW_INCLUDE_NONE",
 			"_WINDLL"
 		}
 
