@@ -34,6 +34,7 @@ project "Titus-Engine"
 	location "Titus-Engine"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "Off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("obj/" .. outputdir .. "/%{prj.name}")
@@ -66,13 +67,11 @@ project "Titus-Engine"
 
 	buildoptions
 	{
-		"/utf-8",
-		"/MD"
+		"/utf-8"
 	}
 
 	filter "system:windows"
 		cppdialect "C++20"
-		staticruntime "Off"
 		systemversion "latest"
 
 		defines
@@ -91,14 +90,17 @@ project "Titus-Engine"
 
 	filter "configurations:Debug"
 		defines "TE_DEBUG"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "TE_RELEASE"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "TE_DIST"
+		runtime "Release"
 		optimize "On"
 
 -- Build Sandbox Project
@@ -107,6 +109,7 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "Off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("obj/" .. outputdir .. "/%{prj.name}")
@@ -130,13 +133,11 @@ project "Sandbox"
 
 	buildoptions
 	{
-		"/utf-8",
-		"/MD"
+		"/utf-8"
 	}
 
 	filter "system:windows"
 		cppdialect "C++20"
-		staticruntime "Off"
 		systemversion "latest"
 
 		defines
@@ -147,12 +148,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "TE_DEBUG"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "TE_RELEASE"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "TE_DIST"
+		runtime "Release"
 		optimize "On"
