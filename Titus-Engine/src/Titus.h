@@ -6,5 +6,7 @@
 #include "Titus/Layers/Layer.h"
 #include "Titus/Logging/Log.h"
 
+#include "Titus/Layers/ImGuiLayer.h"
+
 // Entry Point
 #include "Titus/EntryPoint.h"

@@ -155,6 +155,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGL_Loader.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\TEpch.h" />
     <ClInclude Include="src\Titus.h" />
@@ -165,31 +167,23 @@
     <ClInclude Include="src\Titus\Events\Event.h" />
     <ClInclude Include="src\Titus\Events\KeyEvent.h" />
     <ClInclude Include="src\Titus\Events\MouseEvent.h" />
+    <ClInclude Include="src\Titus\Layers\ImGuiLayer.h" />
     <ClInclude Include="src\Titus\Layers\Layer.h" />
     <ClInclude Include="src\Titus\Layers\LayerStack.h" />
     <ClInclude Include="src\Titus\Logging\Log.h" />
     <ClInclude Include="src\Titus\Window.h" />
-    <ClInclude Include="vendor\imgui\imconfig.h" />
-    <ClInclude Include="vendor\imgui\imgui.h" />
-    <ClInclude Include="vendor\imgui\imgui_internal.h" />
-    <ClInclude Include="vendor\imgui\imstb_rectpack.h" />
-    <ClInclude Include="vendor\imgui\imstb_textedit.h" />
-    <ClInclude Include="vendor\imgui\imstb_truetype.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\TEpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Titus\Application.cpp" />
+    <ClCompile Include="src\Titus\Layers\ImGuiLayer.cpp" />
     <ClCompile Include="src\Titus\Layers\Layer.cpp" />
     <ClCompile Include="src\Titus\Layers\LayerStack.cpp" />
     <ClCompile Include="src\Titus\Logging\Log.cpp" />
-    <ClCompile Include="vendor\imgui\imgui.cpp" />
-    <ClCompile Include="vendor\imgui\imgui_demo.cpp" />
-    <ClCompile Include="vendor\imgui\imgui_draw.cpp" />
-    <ClCompile Include="vendor\imgui\imgui_tables.cpp" />
-    <ClCompile Include="vendor\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLAD\GLAD.vcxproj">
@@ -201,15 +195,6 @@
     <ProjectReference Include="vendor\imgui\imgui.vcxproj">
       <Project>{0098A80F-6CAC-D0C0-352E-7420A101CDF1}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="vendor\imgui\.editorconfig" />
-    <None Include="vendor\imgui\.gitattributes" />
-    <None Include="vendor\imgui\.gitignore" />
-    <None Include="vendor\imgui\premake5.lua" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="vendor\imgui\LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

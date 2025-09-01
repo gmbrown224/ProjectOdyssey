@@ -22,6 +22,7 @@ public:
 	Sandbox() 
 	{
 		PushLayer(new Layer());
+		PushOverlay(new Titus::ImGuiLayer());
 	}
 
 	~Sandbox() { }
