@@ -7,3 +7,6 @@
 [submodule "Titus-Engine/vendor/imgui"]
 	path = Titus-Engine/vendor/imgui
 	url = https://github.com/gmbrown224/Titus-Engine-imgui
+[submodule "Titus-Engine/vendor/stb"]
+	path = Titus-Engine/vendor/stb
+	url = https://github.com/gmbrown224/Titus-Engine-stb
