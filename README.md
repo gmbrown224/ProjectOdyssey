@@ -10,6 +10,7 @@ My custom game engine built in C++ using OpenGL for rendering.
 * [imgui](https://github.com/ocornut/imgui)
 * [Premake](https://github.com/premake/premake-core)
 * [spdlog](https://github.com/gabime/spdlog)
+* [stb](https://github.com/nothings/stb)
 
 ## Author
 

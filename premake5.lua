@@ -54,7 +54,8 @@ project "Titus-Engine"
 		"%{IncludeDir.GLAD}",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.imgui}",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{prj.name}/vendor/stb"
 	}
 
 	links 

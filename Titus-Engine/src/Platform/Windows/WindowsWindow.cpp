@@ -5,6 +5,7 @@
 #include "Titus/Events/KeyEvent.h"
 #include "Titus/Events/MouseEvent.h"
 #include "glad/glad.h"
+#include "stb_image.h"
 
 namespace Titus
 {
@@ -47,6 +48,13 @@ namespace Titus
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+
+		int imgWidth, imgHeight = 200;
+		stbi_uc* iconPixels = stbi_load("C:\\Users\\gramb\\source\\repos\\Titus-Engine\\Titus-Engine\\src\\Assets\\Logos\\Spartan.png", &imgWidth, &imgHeight, nullptr, 4);
+
+		GLFWimage* icon = new GLFWimage{ imgWidth, imgHeight, iconPixels };
+		glfwSetWindowIcon(m_Window, 1, icon);
+
 		glfwMakeContextCurrent(m_Window);
 
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);

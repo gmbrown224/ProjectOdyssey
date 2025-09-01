@@ -5,15 +5,9 @@ class Layer : public Titus::Layer
 public:
 	Layer() : Titus::Layer("Example") { }
 
-	void OnUpdate() override
-	{
-		APP_INFO("Layer::Update");
-	}
+	void OnUpdate() override { }
 
-	void OnEvent(Titus::Event& event) override
-	{
-		APP_INFO("{0}", event.ToString());
-	}
+	void OnEvent(Titus::Event& event) override { }
 };
 
 class Sandbox : public Titus::Application
