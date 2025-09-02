@@ -3,6 +3,8 @@
 #include "Titus/Core.h"
 #include "TEpch.h"
 
+// TODO: Make unified event system and event dispatcher
+
 namespace Titus
 {
 	enum class EventType

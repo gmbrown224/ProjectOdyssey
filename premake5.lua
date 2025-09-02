@@ -20,6 +20,7 @@ IncludeDir = {}
 IncludeDir["GLAD"] = "Titus-Engine/vendor/GLAD/include"
 IncludeDir["GLFW"] = "Titus-Engine/vendor/GLFW/include"
 IncludeDir["imgui"] = "Titus-Engine/vendor/imgui"
+IncludeDir["glm"] = "Titus-Engine/vendor/glm"
 
 group "Dependencies"
 	include "Titus-Engine/vendor/GLAD"
@@ -45,7 +46,9 @@ project "Titus-Engine"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -53,6 +56,7 @@ project "Titus-Engine"
 		"%{prj.name}/src",
 		"%{IncludeDir.GLAD}",
 		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.glm}",
 		"%{IncludeDir.imgui}",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/vendor/stb"
@@ -124,7 +128,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Titus-Engine/src",
-		"Titus-Engine/vendor/spdlog/include"
+		"Titus-Engine/vendor/spdlog/include",
+		"Titus-Engine/vendor/glm"
 	}
 
 	links

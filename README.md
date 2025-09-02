@@ -7,6 +7,7 @@ My custom game engine built in C++ using OpenGL for rendering.
 ### Dependencies
 * [Glad](https://glad.dav1d.de/)
 * [GLFW](https://github.com/glfw/glfw)
+* [glm](https://github.com/g-truc/glm)
 * [imgui](https://github.com/ocornut/imgui)
 * [Premake](https://github.com/premake/premake-core)
 * [spdlog](https://github.com/gabime/spdlog)
@@ -15,6 +16,7 @@ My custom game engine built in C++ using OpenGL for rendering.
 ## Author
 
 * [Graham Brown](https://www.linkedin.com/in/gmbrown224/)
+* [Pierce Nellessen](https://www.linkedin.com/in/pierce-nellessen-188366197/)
 
 ## License
 

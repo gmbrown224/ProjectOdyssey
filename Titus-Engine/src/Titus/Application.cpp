@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "Titus/Logging/Log.h"
 #include "glad/glad.h"
+#include "Titus/Input/Input.h"
 
 namespace Titus
 {
