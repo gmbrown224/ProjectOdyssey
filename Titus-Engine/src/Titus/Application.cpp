@@ -14,13 +14,13 @@ namespace Titus
 		TE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
-		if (SDL_Init(SDL_INIT_EVENTS) != 0)
+		if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0)
 		{
 			TE_CORE_ERROR("Failed to initialize SDL: {0}", SDL_GetError());
 			return;
 		}
 
-		Window TITEN = Window(1280, 720, "TITEN", SDL_WINDOW_VULKAN);
+		m_Window = std::make_unique<Window>(1280, 720, "TITEN", SDL_WINDOW_OPENGL);
 
 		if (!m_Window) {
 			TE_CORE_ERROR("SDL_CreateWindow Error: ", SDL_GetError());

@@ -90,6 +90,13 @@ project "Titus-Engine"
 			"_WINDLL"
 		}
 
+		postbuildcommands
+		{
+			"copy /B /Y ..\\bin\\" .. outputdir .. "\\Titus-Engine\\Titus-Engine.dll ..\\bin\\" .. outputdir .. "\\TITEN\\ > nul",
+			"copy /B /Y ..\\Titus-Engine\\vendor\\SDL\\build\\Release\\SDL3.dll ..\\bin\\" .. outputdir .. "\\Titus-Engine\\ > nul",
+			"copy /B /Y ..\\Titus-Engine\\vendor\\SDL\\build\\Release\\SDL3.dll ..\\bin\\" .. outputdir .. "\\TITEN\\ > nul"
+		}
+
 	filter "configurations:Debug"
 		defines "TE_DEBUG"
 		runtime "Debug"
