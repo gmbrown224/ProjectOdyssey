@@ -3,11 +3,11 @@
 class Layer : public Titus::Layer
 {
 public:
-	Layer() : Titus::Layer("Example") { }
+	Layer() : Titus::Layer("Example") {}
 
-	void OnUpdate() override { }
+	void OnUpdate() override {}
 
-	void OnEvent(Titus::Event& event) override 
+	void OnEvent(Titus::Event& event) override
 	{
 		if (event.GetEventType() == Titus::EventType::KeyPressed)
 		{
@@ -18,19 +18,19 @@ public:
 	}
 };
 
-class Sandbox : public Titus::Application
+class TITEN : public Titus::Application
 {
 public:
-	Sandbox() 
+	TITEN()
 	{
 		PushLayer(new Layer());
 		PushOverlay(new Titus::ImGuiLayer());
 	}
 
-	~Sandbox() { }
+	~TITEN() {}
 };
 
 Titus::Application* Titus::CreateApplication()
 {
-	return new Sandbox();
+	return new TITEN();
 }

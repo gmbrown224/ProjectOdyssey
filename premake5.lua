@@ -1,10 +1,10 @@
 --
--- Titus Engine & Sandbox App Makefile
+-- Titus Engine & TITEN App Makefile
 --
 
 workspace "Titus-Engine"
 	architecture "x64"
-	startproject "Sandbox"
+	startproject "TITEN"
 
 	configurations
 	{
@@ -90,7 +90,7 @@ project "Titus-Engine"
 
 		postbuildcommands
 		{
-			"copy /B /Y ..\\bin\\" .. outputdir .. "\\Titus-Engine\\Titus-Engine.dll ..\\bin\\" .. outputdir .. "\\Sandbox\\ > nul"
+			"copy /B /Y ..\\bin\\" .. outputdir .. "\\Titus-Engine\\Titus-Engine.dll ..\\bin\\" .. outputdir .. "\\TITEN\\ > nul"
 		}
 
 	filter "configurations:Debug"
@@ -108,10 +108,10 @@ project "Titus-Engine"
 		runtime "Release"
 		optimize "On"
 
--- Build Sandbox Project
+-- Build TITEN Project
 
-project "Sandbox"
-	location "Sandbox"
+project "TITEN"
+	location "TITEN"
 	kind "ConsoleApp"
 	language "C++"
 	staticruntime "Off"

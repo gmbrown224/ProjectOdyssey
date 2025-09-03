@@ -95,7 +95,7 @@
       <ImportLibrary>..\bin\Debug-windows-x86_64\Titus-Engine\Titus-Engine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /B /Y ..\bin\Debug-windows-x86_64\Titus-Engine\Titus-Engine.dll ..\bin\Debug-windows-x86_64\Sandbox\ &gt; nul</Command>
+      <Command>copy /B /Y ..\bin\Debug-windows-x86_64\Titus-Engine\Titus-Engine.dll ..\bin\Debug-windows-x86_64\TITEN\ &gt; nul</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -123,7 +123,7 @@
       <ImportLibrary>..\bin\Release-windows-x86_64\Titus-Engine\Titus-Engine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /B /Y ..\bin\Release-windows-x86_64\Titus-Engine\Titus-Engine.dll ..\bin\Release-windows-x86_64\Sandbox\ &gt; nul</Command>
+      <Command>copy /B /Y ..\bin\Release-windows-x86_64\Titus-Engine\Titus-Engine.dll ..\bin\Release-windows-x86_64\TITEN\ &gt; nul</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -151,7 +151,7 @@
       <ImportLibrary>..\bin\Dist-windows-x86_64\Titus-Engine\Titus-Engine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /B /Y ..\bin\Dist-windows-x86_64\Titus-Engine\Titus-Engine.dll ..\bin\Dist-windows-x86_64\Sandbox\ &gt; nul</Command>
+      <Command>copy /B /Y ..\bin\Dist-windows-x86_64\Titus-Engine\Titus-Engine.dll ..\bin\Dist-windows-x86_64\TITEN\ &gt; nul</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
