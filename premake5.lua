@@ -21,6 +21,7 @@ IncludeDir["GLAD"] = "Titus-Engine/vendor/GLAD/include"
 IncludeDir["GLFW"] = "Titus-Engine/vendor/GLFW/include"
 IncludeDir["imgui"] = "Titus-Engine/vendor/imgui"
 IncludeDir["glm"] = "Titus-Engine/vendor/glm"
+IncludeDir["SDL"] = "Titus-Engine/vendor/SDL/include/SDL3"
 
 group "Dependencies"
 	include "Titus-Engine/vendor/GLAD"
@@ -35,6 +36,7 @@ project "Titus-Engine"
 	location "Titus-Engine"
 	kind "SharedLib"
 	language "C++"
+	cppdialect "C++20"
 	staticruntime "Off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -42,6 +44,11 @@ project "Titus-Engine"
 
 	pchheader "TEpch.h"
 	pchsource "Titus-Engine/src/TEpch.cpp"
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
 
 	files
 	{
@@ -58,6 +65,7 @@ project "Titus-Engine"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.imgui}",
+		"%{prj.name}/vendor/SDL/include/SDL3",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/vendor/stb"
 	}
@@ -76,7 +84,6 @@ project "Titus-Engine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++20"
 		systemversion "latest"
 
 		defines
@@ -86,11 +93,6 @@ project "Titus-Engine"
 			"TE_ENABLE_ASSERTS",
 			"TE_BUILD_DLL",
 			"_WINDLL"
-		}
-
-		postbuildcommands
-		{
-			"copy /B /Y ..\\bin\\" .. outputdir .. "\\Titus-Engine\\Titus-Engine.dll ..\\bin\\" .. outputdir .. "\\TITEN\\ > nul"
 		}
 
 	filter "configurations:Debug"
@@ -114,6 +116,7 @@ project "TITEN"
 	location "TITEN"
 	kind "ConsoleApp"
 	language "C++"
+	cppdialect "C++20"
 	staticruntime "Off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -128,6 +131,8 @@ project "TITEN"
 	includedirs
 	{
 		"Titus-Engine/src",
+		"Titus-Engine/vendor/imgui",
+		"Titus-Engine/vendor/SDL/include/SDL3",
 		"Titus-Engine/vendor/spdlog/include",
 		"Titus-Engine/vendor/glm"
 	}
@@ -143,7 +148,6 @@ project "TITEN"
 	}
 
 	filter "system:windows"
-		cppdialect "C++20"
 		systemversion "latest"
 
 		defines

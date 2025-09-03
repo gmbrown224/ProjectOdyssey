@@ -3,9 +3,19 @@
 class Layer : public Titus::Layer
 {
 public:
-	Layer() : Titus::Layer("Example") {}
+	Layer() : Titus::Layer("Example") { }
 
-	void OnUpdate() override {}
+	void OnUpdate() override { }
+
+	void OnImGuiRender() override
+	{
+		//ImGui::Begin("Hello, ImGui!");
+
+		//if (ImGui::Button("Press me"))
+		//	APP_TRACE("Button pressed (ImGui)");
+
+		//ImGui::End();
+	}
 
 	void OnEvent(Titus::Event& event) override
 	{
@@ -24,10 +34,9 @@ public:
 	TITEN()
 	{
 		PushLayer(new Layer());
-		PushOverlay(new Titus::ImGuiLayer());
 	}
 
-	~TITEN() {}
+	~TITEN() { }
 };
 
 Titus::Application* Titus::CreateApplication()

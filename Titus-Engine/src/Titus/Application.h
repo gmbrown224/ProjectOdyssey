@@ -7,6 +7,8 @@
 #include "Layers/LayerStack.h"
 #include "Window.h"
 
+#include "Layers/ImGuiLayer.h"
+
 namespace Titus
 {
 	class TITUS_API Application
@@ -29,6 +31,7 @@ namespace Titus
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 		static Application* s_Instance;

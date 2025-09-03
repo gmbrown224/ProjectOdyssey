@@ -18,6 +18,9 @@ namespace Titus
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
 
 	Application::~Application() { }
@@ -25,13 +28,11 @@ namespace Titus
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
-		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* overlay)
 	{
 		m_LayerStack.PushOverlay(overlay);
-		overlay->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
@@ -54,8 +55,10 @@ namespace Titus
 			glClearColor(.75f, .75f, .75f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
+			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnImGuiRender();
+			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
 		}

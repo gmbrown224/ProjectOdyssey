@@ -79,8 +79,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>TEpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;TE_PLATFORM_WINDOWS;TE_ENABLE_ASSERTS;TE_BUILD_DLL;_WINDLL;TE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\GLAD\include;vendor\GLFW\include;vendor\glm;vendor\imgui;vendor\spdlog\include;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;TE_PLATFORM_WINDOWS;TE_ENABLE_ASSERTS;TE_BUILD_DLL;_WINDLL;TE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\GLAD\include;vendor\GLFW\include;vendor\glm;vendor\imgui;vendor\SDL\include\SDL3;vendor\spdlog\include;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -94,17 +94,14 @@
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Debug-windows-x86_64\Titus-Engine\Titus-Engine.lib</ImportLibrary>
     </Link>
-    <PostBuildEvent>
-      <Command>copy /B /Y ..\bin\Debug-windows-x86_64\Titus-Engine\Titus-Engine.dll ..\bin\Debug-windows-x86_64\TITEN\ &gt; nul</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>TEpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;TE_PLATFORM_WINDOWS;TE_ENABLE_ASSERTS;TE_BUILD_DLL;_WINDLL;TE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\GLAD\include;vendor\GLFW\include;vendor\glm;vendor\imgui;vendor\spdlog\include;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;TE_PLATFORM_WINDOWS;TE_ENABLE_ASSERTS;TE_BUILD_DLL;_WINDLL;TE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\GLAD\include;vendor\GLFW\include;vendor\glm;vendor\imgui;vendor\SDL\include\SDL3;vendor\spdlog\include;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -122,17 +119,14 @@
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Release-windows-x86_64\Titus-Engine\Titus-Engine.lib</ImportLibrary>
     </Link>
-    <PostBuildEvent>
-      <Command>copy /B /Y ..\bin\Release-windows-x86_64\Titus-Engine\Titus-Engine.dll ..\bin\Release-windows-x86_64\TITEN\ &gt; nul</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>TEpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;TE_PLATFORM_WINDOWS;TE_ENABLE_ASSERTS;TE_BUILD_DLL;_WINDLL;TE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\GLAD\include;vendor\GLFW\include;vendor\glm;vendor\imgui;vendor\spdlog\include;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;TE_PLATFORM_WINDOWS;TE_ENABLE_ASSERTS;TE_BUILD_DLL;_WINDLL;TE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\GLAD\include;vendor\GLFW\include;vendor\glm;vendor\imgui;vendor\SDL\include\SDL3;vendor\spdlog\include;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -150,13 +144,8 @@
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Dist-windows-x86_64\Titus-Engine\Titus-Engine.lib</ImportLibrary>
     </Link>
-    <PostBuildEvent>
-      <Command>copy /B /Y ..\bin\Dist-windows-x86_64\Titus-Engine\Titus-Engine.dll ..\bin\Dist-windows-x86_64\TITEN\ &gt; nul</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGL_Loader.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\TEpch.h" />
@@ -596,13 +585,13 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\TEpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Titus\Application.cpp" />
+    <ClCompile Include="src\Titus\Layers\ImGuiBuild.cpp" />
     <ClCompile Include="src\Titus\Layers\ImGuiLayer.cpp" />
     <ClCompile Include="src\Titus\Layers\Layer.cpp" />
     <ClCompile Include="src\Titus\Layers\LayerStack.cpp" />
