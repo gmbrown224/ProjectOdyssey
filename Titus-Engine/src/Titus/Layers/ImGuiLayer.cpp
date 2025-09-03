@@ -4,9 +4,9 @@
 #include "Titus/Application.h"
 
 #include "imgui.h"
-#include "GLFW/glfw3.h"
-#include "glad/glad.h"
-#include "Platform/OpenGL/ImGuiOpenGLRenderer.h"
+#include "imgui_internal.h"
+#include "backends/imgui_impl_opengl3.h"
+#include "backends/imgui_impl_sdl3.h"
 
 namespace Titus
 {
@@ -17,127 +17,69 @@ namespace Titus
 
 	void ImGuiLayer::OnAttach()
 	{
+		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
+
+		ImGuiIO& io = ImGui::GetIO(); (void)io;
+		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+		io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
+		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+		//io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoTaskBarIcon;
+		//io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoMerge;
+
 		ImGui::StyleColorsDark();
 
-		ImGuiIO& io = ImGui::GetIO();
+		ImGuiStyle& style = ImGui::GetStyle();
+		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		{
+			style.WindowRounding = 0.0f;
+			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
+		}
 
-		io.BackendFlags |= ImGuiBackendFlags_HasMouseCursors;
-		io.BackendFlags |= ImGuiBackendFlags_HasSetMousePos;
+		Application& app = Application::Get();
+		SDL_Window* window = static_cast<SDL_Window*>(app.GetWindow().GetNativeWindow());
+		SDL_GLContext glContext = app.GetWindow().GetGLContext();
 
+		ImGui_ImplSDL3_InitForOpenGL(window, glContext);
 		ImGui_ImplOpenGL3_Init("#version 410");
 	}
 
-	void ImGuiLayer::OnDetach() { }
+	void ImGuiLayer::OnDetach() 
+	{
+		ImGui_ImplOpenGL3_Shutdown();
+		ImGui_ImplSDL3_Shutdown();
 
-	void ImGuiLayer::OnUpdate() 
+		ImGui::DestroyContext();
+	}
+
+	void ImGuiLayer::Begin() 
+	{
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplSDL3_NewFrame();
+
+		ImGui::NewFrame();
+	}
+
+	void ImGuiLayer::End()
 	{
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
-		io.DisplaySize = ImVec2(app.GetWindow().GetWidth(), app.GetWindow().GetHeight());
-
-		float time = (float)glfwGetTime();
-		io.DeltaTime = m_Time > 0.0f ? (time - m_Time) : (1.0f / 60.0f);
-		m_Time = time;
-
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui::NewFrame();
-
-		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
+		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		{
+			ImGui::UpdatePlatformWindows();
+			ImGui::RenderPlatformWindowsDefault();
+		}
 	}
 
-	void ImGuiLayer::OnEvent(Event& event) 
+	void ImGuiLayer::OnImGuiRender() 
 	{
-		EventDispatcher dispatcher(event);
-		dispatcher.Dispatch<MouseButtonPressedEvent>(TE_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonPressedEvent));
-		dispatcher.Dispatch<MouseButtonReleasedEvent>(TE_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonReleasedEvent));
-		dispatcher.Dispatch<MouseMovedEvent>(TE_BIND_EVENT_FN(ImGuiLayer::OnMouseMovedEvent));
-		dispatcher.Dispatch<MouseScrolledEvent>(TE_BIND_EVENT_FN(ImGuiLayer::OnMouseScrolledEvent));
-		dispatcher.Dispatch<KeyPressedEvent>(TE_BIND_EVENT_FN(ImGuiLayer::OnKeyPressedEvent));
-		dispatcher.Dispatch<KeyReleasedEvent>(TE_BIND_EVENT_FN(ImGuiLayer::OnKeyReleasedEvent));
-		dispatcher.Dispatch<KeyTypedEvent>(TE_BIND_EVENT_FN(ImGuiLayer::OnKeyTypedEvent));
-		dispatcher.Dispatch<WindowResizeEvent>(TE_BIND_EVENT_FN(ImGuiLayer::OnWindowResizeEvent));
-	}
-
-	bool ImGuiLayer::OnMouseButtonPressedEvent(MouseButtonPressedEvent& e) 
-	{
-		ImGuiIO& io = ImGui::GetIO();
-		io.MouseDown[e.GetMouseButton()] = true;
-
-		return false;
-	}
-
-	bool ImGuiLayer::OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e) 
-	{
-		ImGuiIO& io = ImGui::GetIO();
-		io.MouseDown[e.GetMouseButton()] = false;
-
-		return false;
-	}
-
-	bool ImGuiLayer::OnMouseMovedEvent(MouseMovedEvent& e) 
-	{
-		ImGuiIO& io = ImGui::GetIO();
-		io.MousePos = ImVec2(e.GetX(), e.GetY());
-
-		return false;
-	}
-
-	bool ImGuiLayer::OnMouseScrolledEvent(MouseScrolledEvent& e) 
-	{
-		ImGuiIO& io = ImGui::GetIO();
-		io.MouseWheelH += e.GetXOffset();
-		io.MouseWheel += e.GetYOffset();
-
-		return false;
-	}
-
-	bool ImGuiLayer::OnKeyPressedEvent(KeyPressedEvent& e) 
-	{
-		ImGuiIO& io = ImGui::GetIO();
-
-		io.KeyCtrl = ImGui::IsKeyDown(ImGuiKey_LeftCtrl) || ImGui::IsKeyDown(ImGuiKey_RightCtrl);
-		io.KeyShift = ImGui::IsKeyDown(ImGuiKey_LeftShift) || ImGui::IsKeyDown(ImGuiKey_RightShift);
-		io.KeyAlt = ImGui::IsKeyDown(ImGuiKey_LeftAlt) || ImGui::IsKeyDown(ImGuiKey_RightAlt);
-		io.KeySuper = ImGui::IsKeyDown(ImGuiKey_LeftSuper) || ImGui::IsKeyDown(ImGuiKey_RightSuper);
-
-		return false;
-	}
-
-	bool ImGuiLayer::OnKeyReleasedEvent(KeyReleasedEvent& e) 
-	{
-		ImGuiIO& io = ImGui::GetIO();
-
-		io.KeyCtrl = ImGui::IsKeyDown(ImGuiKey_LeftCtrl) || ImGui::IsKeyDown(ImGuiKey_RightCtrl);
-		io.KeyShift = ImGui::IsKeyDown(ImGuiKey_LeftShift) || ImGui::IsKeyDown(ImGuiKey_RightShift);
-		io.KeyAlt = ImGui::IsKeyDown(ImGuiKey_LeftAlt) || ImGui::IsKeyDown(ImGuiKey_RightAlt);
-		io.KeySuper = ImGui::IsKeyDown(ImGuiKey_LeftSuper) || ImGui::IsKeyDown(ImGuiKey_RightSuper);
-
-		return false;
-	}
-
-	bool ImGuiLayer::OnKeyTypedEvent(KeyTypedEvent& e) 
-	{
-		ImGuiIO& io = ImGui::GetIO();
-		int keycode = e.GetKeyCode();
-
-		if (keycode > 0 && keycode < 0x10000)
-			io.AddInputCharacter((unsigned short)keycode);
-
-		return false;
-	}
-
-	bool ImGuiLayer::OnWindowResizeEvent(WindowResizeEvent& e) 
-	{
-		ImGuiIO& io = ImGui::GetIO();
-		io.DisplaySize = ImVec2((float)e.GetWidth(), (float)e.GetHeight());
-		io.DisplayFramebufferScale = ImVec2(1.0f, 1.0f);
-		glViewport(0, 0, e.GetWidth(), e.GetHeight());
-
-		return false;
+		static bool show = true;
+		ImGui::ShowDemoWindow(&show);
 	}
 }

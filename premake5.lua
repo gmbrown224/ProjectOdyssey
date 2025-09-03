@@ -1,10 +1,10 @@
 --
--- Titus Engine & Sandbox App Makefile
+-- Titus Engine & TITEN App Makefile
 --
 
 workspace "Titus-Engine"
 	architecture "x64"
-	startproject "Sandbox"
+	startproject "TITEN"
 
 	configurations
 	{
@@ -17,14 +17,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLAD"] = "Titus-Engine/vendor/GLAD/include"
-IncludeDir["GLFW"] = "Titus-Engine/vendor/GLFW/include"
 IncludeDir["imgui"] = "Titus-Engine/vendor/imgui"
 IncludeDir["glm"] = "Titus-Engine/vendor/glm"
 
 group "Dependencies"
-	include "Titus-Engine/vendor/GLAD"
-	include "Titus-Engine/vendor/GLFW"
 	include "Titus-Engine/vendor/imgui"
 
 group ""
@@ -35,6 +31,7 @@ project "Titus-Engine"
 	location "Titus-Engine"
 	kind "SharedLib"
 	language "C++"
+	cppdialect "C++20"
 	staticruntime "Off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -42,6 +39,15 @@ project "Titus-Engine"
 
 	pchheader "TEpch.h"
 	pchsource "Titus-Engine/src/TEpch.cpp"
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
+	libdirs {
+		"Titus-Engine/vendor/SDL/build/Release"
+	}
 
 	files
 	{
@@ -54,19 +60,17 @@ project "Titus-Engine"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{IncludeDir.GLAD}",
-		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.imgui}",
+		"%{prj.name}/vendor/SDL/include",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/vendor/stb"
 	}
 
 	links 
 	{ 
-		"GLAD",
-		"GLFW",
 		"imgui",
+		"SDL3",
 		"opengl32.lib"
 	}
 
@@ -76,12 +80,10 @@ project "Titus-Engine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++20"
 		systemversion "latest"
 
 		defines
 		{
-			"GLFW_INCLUDE_NONE",
 			"TE_PLATFORM_WINDOWS",
 			"TE_ENABLE_ASSERTS",
 			"TE_BUILD_DLL",
@@ -90,7 +92,9 @@ project "Titus-Engine"
 
 		postbuildcommands
 		{
-			"copy /B /Y ..\\bin\\" .. outputdir .. "\\Titus-Engine\\Titus-Engine.dll ..\\bin\\" .. outputdir .. "\\Sandbox\\ > nul"
+			"copy /B /Y ..\\bin\\" .. outputdir .. "\\Titus-Engine\\Titus-Engine.dll ..\\bin\\" .. outputdir .. "\\TITEN\\ > nul",
+			"copy /B /Y ..\\Titus-Engine\\vendor\\SDL\\build\\Release\\SDL3.dll ..\\bin\\" .. outputdir .. "\\Titus-Engine\\ > nul",
+			"copy /B /Y ..\\Titus-Engine\\vendor\\SDL\\build\\Release\\SDL3.dll ..\\bin\\" .. outputdir .. "\\TITEN\\ > nul"
 		}
 
 	filter "configurations:Debug"
@@ -108,12 +112,13 @@ project "Titus-Engine"
 		runtime "Release"
 		optimize "On"
 
--- Build Sandbox Project
+-- Build TITEN Project
 
-project "Sandbox"
-	location "Sandbox"
+project "TITEN"
+	location "TITEN"
 	kind "ConsoleApp"
 	language "C++"
+	cppdialect "C++20"
 	staticruntime "Off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -128,6 +133,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Titus-Engine/src",
+		"Titus-Engine/vendor/imgui",
+		"Titus-Engine/vendor/SDL/include",
 		"Titus-Engine/vendor/spdlog/include",
 		"Titus-Engine/vendor/glm"
 	}
@@ -143,7 +150,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++20"
 		systemversion "latest"
 
 		defines

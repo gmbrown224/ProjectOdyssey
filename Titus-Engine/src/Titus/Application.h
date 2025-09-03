@@ -2,10 +2,11 @@
 
 #include "Core.h"
 
-#include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
 #include "Layers/LayerStack.h"
-#include "Window.h"
+#include "Window/Window.h"
+#include "Events/Event.h"
+#include "Layers/ImGuiLayer.h"
 
 namespace Titus
 {
@@ -29,6 +30,7 @@ namespace Titus
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 		static Application* s_Instance;
