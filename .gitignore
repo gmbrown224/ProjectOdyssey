@@ -980,6 +980,7 @@ _deps
 *.la
 *.a
 *.lib
+*.ini
 
 # Executables
 *.exe
