@@ -14,3 +14,12 @@
 [submodule "Titus-Engine/vendor/SDL"]
 	path = Titus-Engine/vendor/SDL
 	url = https://github.com/libsdl-org/SDL
+[submodule "Titus-Engine/vendor/Vulkan-Loader"]
+	path = Titus-Engine/vendor/Vulkan-Loader
+	url = https://github.com/gmbrown224/Titus-Engine-Vulkan-Loader
+[submodule "Titus-Engine/vendor/MoltenVK"]
+	path = Titus-Engine/vendor/MoltenVK
+	url = https://github.com/gmbrown224/Titus-Engine-MoltenVK
+[submodule "Titus-Engine/vendor/Vulkan-Headers"]
+	path = Titus-Engine/vendor/Vulkan-Headers
+	url = https://github.com/KhronosGroup/Vulkan-Headers
