@@ -1,9 +1,6 @@
 #pragma once
 
 #include "Titus/Layers/Layer.h"
-#include "Titus/Events/ApplicationEvent.h"
-#include "Titus/Events/KeyEvent.h"
-#include "Titus/Events/MouseEvent.h"
 
 namespace Titus
 {

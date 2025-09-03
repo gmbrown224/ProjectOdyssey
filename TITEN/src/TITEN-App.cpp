@@ -21,9 +21,9 @@ public:
 	{
 		if (event.GetEventType() == Titus::EventType::KeyPressed)
 		{
-			Titus::KeyPressedEvent& e = (Titus::KeyPressedEvent&)event;
-			if (e.GetKeyCode() == TE_KEY_TAB)
-				APP_TRACE("Tab key is pressed (event)");
+			//Titus::KeyPressedEvent& e = (Titus::KeyPressedEvent&)event;
+			//if (e.GetKeyCode() == TE_TAB)
+			//	APP_TRACE("Tab key is pressed (event)");
 		}
 	}
 };

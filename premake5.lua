@@ -21,7 +21,6 @@ IncludeDir["GLAD"] = "Titus-Engine/vendor/GLAD/include"
 IncludeDir["GLFW"] = "Titus-Engine/vendor/GLFW/include"
 IncludeDir["imgui"] = "Titus-Engine/vendor/imgui"
 IncludeDir["glm"] = "Titus-Engine/vendor/glm"
-IncludeDir["SDL"] = "Titus-Engine/vendor/SDL/include/SDL3"
 
 group "Dependencies"
 	include "Titus-Engine/vendor/GLAD"
@@ -50,6 +49,10 @@ project "Titus-Engine"
 		"_CRT_SECURE_NO_WARNINGS"
 	}
 
+	libdirs {
+		"Titus-Engine/vendor/SDL/build/Release"
+	}
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -65,7 +68,7 @@ project "Titus-Engine"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.imgui}",
-		"%{prj.name}/vendor/SDL/include/SDL3",
+		"%{prj.name}/vendor/SDL/include",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/vendor/stb"
 	}
@@ -75,6 +78,7 @@ project "Titus-Engine"
 		"GLAD",
 		"GLFW",
 		"imgui",
+		"SDL3",
 		"opengl32.lib"
 	}
 
@@ -132,7 +136,7 @@ project "TITEN"
 	{
 		"Titus-Engine/src",
 		"Titus-Engine/vendor/imgui",
-		"Titus-Engine/vendor/SDL/include/SDL3",
+		"Titus-Engine/vendor/SDL/include",
 		"Titus-Engine/vendor/spdlog/include",
 		"Titus-Engine/vendor/glm"
 	}

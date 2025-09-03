@@ -2,8 +2,6 @@
 
 #include "Application.h"
 #include "Titus/Logging/Log.h"
-#include "glad/glad.h"
-#include "Titus/Input/Input.h"
 
 namespace Titus
 {
@@ -16,14 +14,28 @@ namespace Titus
 		TE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
-		m_Window = std::unique_ptr<Window>(Window::Create());
-		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		if (SDL_Init(SDL_INIT_EVENTS) != 0)
+		{
+			TE_CORE_ERROR("Failed to initialize SDL: {0}", SDL_GetError());
+			return;
+		}
+
+		Window TITEN = Window(1280, 720, "TITEN", SDL_WINDOW_VULKAN);
+
+		if (!m_Window) {
+			TE_CORE_ERROR("SDL_CreateWindow Error: ", SDL_GetError());
+		}
+
+		// m_Window->SetEventCallback(TE_BIND_EVENT_FN(OnEvent));
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 	}
 
-	Application::~Application() { }
+	Application::~Application()
+	{
+		SDL_Quit();
+	}
 
 	void Application::PushLayer(Layer* layer)
 	{
@@ -52,15 +64,12 @@ namespace Titus
 	{
 		while (m_Running)
 		{
-			glClearColor(.75f, .75f, .75f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
-
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
 				layer->OnImGuiRender();
 			m_ImGuiLayer->End();
 
-			m_Window->OnUpdate();
+			//m_Window->OnUpdate();
 		}
 	}
 

@@ -1,0 +1,149 @@
+#pragma once
+
+#include "SDL3/SDL_keycode.h"
+
+// Alphabet
+#define TE_A			SDLK_A
+#define TE_B			SDLK_B
+#define TE_C			SDLK_C
+#define TE_D			SDLK_D
+#define TE_E			SDLK_E
+#define TE_F			SDLK_F
+#define TE_G			SDLK_G
+#define TE_H 			SDLK_H
+#define TE_I 			SDLK_I
+#define TE_J 			SDLK_J
+#define TE_K 			SDLK_K
+#define TE_L 			SDLK_L
+#define TE_M 			SDLK_M
+#define TE_N 			SDLK_N
+#define TE_O 			SDLK_O
+#define TE_P 			SDLK_P
+#define TE_Q 			SDLK_Q
+#define TE_R 			SDLK_R
+#define TE_S 			SDLK_S
+#define TE_T 			SDLK_T
+#define TE_U 			SDLK_U
+#define TE_V 			SDLK_V
+#define TE_W 			SDLK_W
+#define TE_X 			SDLK_X
+#define TE_Y 			SDLK_Y
+#define TE_Z 			SDLK_Z
+
+// Numbers
+#define TE_0 			SDLK_0
+#define TE_1 			SDLK_1
+#define TE_2 			SDLK_2
+#define TE_3 			SDLK_3
+#define TE_4 			SDLK_4
+#define TE_5 			SDLK_5
+#define TE_6 			SDLK_6
+#define TE_7 			SDLK_7
+#define TE_8 			SDLK_8
+#define TE_9 			SDLK_9
+
+// Space and control keys
+#define TE_SPACE		SDLK_SPACE
+#define TE_RETURN		SDLK_RETURN
+#define TE_ESCAPE		SDLK_ESCAPE
+#define TE_BACKSPACE	SDLK_BACKSPACE
+#define TE_TAB			SDLK_TAB
+#define TE_CAPSLOCK		SDLK_CAPSLOCK
+#define TE_LSHIFT		SDLK_LSHIFT
+#define TE_RSHIFT		SDLK_RSHIFT
+#define TE_LCTRL		SDLK_LCTRL
+#define TE_RCTRL		SDLK_RCTRL
+#define TE_LALT			SDLK_LALT
+#define TE_RALT			SDLK_RALT
+#define TE_LGUI			SDLK_LGUI
+#define TE_RGUI			SDLK_RGUI
+#define TE_MENU			SDLK_MENU
+#define TE_NUMLOCK		SDLK_NUMLOCKCLEAR
+#define TE_PRINTSCREEN	SDLK_PRINTSCREEN
+
+// Function keys
+#define TE_F1  			SDLK_F1
+#define TE_F2  			SDLK_F2
+#define TE_F3  			SDLK_F3
+#define TE_F4  			SDLK_F4
+#define TE_F5  			SDLK_F5
+#define TE_F6  			SDLK_F6
+#define TE_F7  			SDLK_F7
+#define TE_F8  			SDLK_F8
+#define TE_F9  			SDLK_F9
+#define TE_F10 			SDLK_F10
+#define TE_F11 			SDLK_F11
+#define TE_F12 			SDLK_F12
+#define TE_F13 			SDLK_F13
+#define TE_F14 			SDLK_F14
+#define TE_F15 			SDLK_F15
+#define TE_F16 			SDLK_F16
+#define TE_F17 			SDLK_F17
+#define TE_F18 			SDLK_F18
+#define TE_F19 			SDLK_F19
+#define TE_F20 			SDLK_F20
+#define TE_F21 			SDLK_F21
+#define TE_F22 			SDLK_F22
+#define TE_F23 			SDLK_F23
+#define TE_F24 			SDLK_F24
+
+// Arrow keys
+#define TE_UP			SDLK_UP
+#define TE_DOWN			SDLK_DOWN
+#define TE_LEFT			SDLK_LEFT
+#define TE_RIGHT		SDLK_RIGHT
+#define TE_PAGEUP		SDLK_PAGEUP
+#define TE_PAGEDOWN		SDLK_PAGEDOWN
+#define TE_HOME			SDLK_HOME
+#define TE_END			SDLK_END
+#define TE_INSERT		SDLK_INSERT
+#define TE_DELETE		SDLK_DELETE
+
+// Punctuation
+#define TE_EXCLAIM      SDLK_EXCLAIM
+#define TE_QUOTEDBL     SDLK_DBLAPOSTROPHE
+#define TE_HASH         SDLK_HASH
+#define TE_PERCENT      SDLK_PERCENT
+#define TE_DOLLAR       SDLK_DOLLAR
+#define TE_AMPERSAND    SDLK_AMPERSAND
+#define TE_QUOTE        SDLK_APOSTROPHE
+#define TE_LEFTPAREN    SDLK_LEFTPAREN
+#define TE_RIGHTPAREN   SDLK_RIGHTPAREN
+#define TE_ASTERISK     SDLK_ASTERISK
+#define TE_PLUS         SDLK_PLUS
+#define TE_COMMA        SDLK_COMMA
+#define TE_MINUS        SDLK_MINUS
+#define TE_PERIOD       SDLK_PERIOD
+#define TE_SLASH        SDLK_SLASH
+#define TE_COLON        SDLK_COLON
+#define TE_SEMICOLON    SDLK_SEMICOLON
+#define TE_LESS         SDLK_LESS
+#define TE_EQUALS       SDLK_EQUALS
+#define TE_GREATER      SDLK_GREATER
+#define TE_QUESTION     SDLK_QUESTION
+#define TE_AT           SDLK_AT
+#define TE_LEFTBRACKET  SDLK_LEFTBRACKET
+#define TE_BACKSLASH    SDLK_BACKSLASH
+#define TE_RIGHTBRACKET SDLK_RIGHTBRACKET
+#define TE_CARET        SDLK_CARET
+#define TE_UNDERSCORE   SDLK_UNDERSCORE
+#define TE_BACKQUOTE    SDLK_GRAVE
+
+// Numpad keys
+#define TE_KP_0			SDLK_KP_0
+#define TE_KP_1			SDLK_KP_1
+#define TE_KP_2			SDLK_KP_2
+#define TE_KP_3			SDLK_KP_3
+#define TE_KP_4			SDLK_KP_4
+#define TE_KP_5			SDLK_KP_5
+#define TE_KP_6			SDLK_KP_6
+#define TE_KP_7			SDLK_KP_7
+#define TE_KP_8			SDLK_KP_8
+#define TE_KP_9			SDLK_KP_9
+#define TE_KP_PERIOD	SDLK_KP_PERIOD
+#define TE_KP_DIVIDE	SDLK_KP_DIVIDE
+#define TE_KP_MULTIPLY	SDLK_KP_MULTIPLY
+#define TE_KP_MINUS		SDLK_KP_MINUS
+#define TE_KP_PLUS		SDLK_KP_PLUS
+#define TE_KP_ENTER		SDLK_KP_ENTER
+#define TE_KP_EQUALS	SDLK_KP_EQUALS

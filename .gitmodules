@@ -1,9 +1,6 @@
 [submodule "Titus-Engine/vendor/spdlog"]
 	path = Titus-Engine/vendor/spdlog
 	url = https://github.com/gabime/spdlog/
-[submodule "Titus-Engine/vendor/GLFW"]
-	path = Titus-Engine/vendor/GLFW
-	url = https://github.com/gmbrown224/Titus-Engine-glfw
 [submodule "Titus-Engine/vendor/imgui"]
 	path = Titus-Engine/vendor/imgui
 	url = https://github.com/gmbrown224/Titus-Engine-imgui

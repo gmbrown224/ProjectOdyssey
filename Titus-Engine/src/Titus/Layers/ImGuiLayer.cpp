@@ -5,10 +5,8 @@
 
 #include "imgui.h"
 #include "imgui_internal.h"
-#include "GLFW/glfw3.h"
-#include "glad/glad.h"
 #include "backends/imgui_impl_opengl3.h"
-#include "backends/imgui_impl_glfw.h"
+#include "backends/imgui_impl_sdl3.h"
 
 namespace Titus
 {
@@ -24,7 +22,7 @@ namespace Titus
 
 		ImGuiIO& io = ImGui::GetIO(); (void)io;
 		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
-		//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
+		io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 		//io.ConfigFlags |= ImGuiConfigFlags_ViewportsNoTaskBarIcon;
@@ -40,16 +38,17 @@ namespace Titus
 		}
 
 		Application& app = Application::Get();
-		GLFWwindow* window = static_cast<GLFWwindow*>(app.GetWindow().GetNativeWindow());
+		SDL_Window* window = static_cast<SDL_Window*>(app.GetWindow().GetNativeWindow());
+		SDL_GLContext glContext = app.GetWindow().GetGLContext();
 
-		ImGui_ImplGlfw_InitForOpenGL(window, true);
+		ImGui_ImplSDL3_InitForOpenGL(window, glContext);
 		ImGui_ImplOpenGL3_Init("#version 410");
 	}
 
 	void ImGuiLayer::OnDetach() 
 	{
 		ImGui_ImplOpenGL3_Shutdown();
-		ImGui_ImplGlfw_Shutdown();
+		ImGui_ImplSDL3_Shutdown();
 
 		ImGui::DestroyContext();
 	}
@@ -57,7 +56,7 @@ namespace Titus
 	void ImGuiLayer::Begin() 
 	{
 		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
+		ImGui_ImplSDL3_NewFrame();
 
 		ImGui::NewFrame();
 	}
@@ -73,10 +72,8 @@ namespace Titus
 
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
 		{
-			GLFWwindow* backup_current_context = glfwGetCurrentContext();
 			ImGui::UpdatePlatformWindows();
 			ImGui::RenderPlatformWindowsDefault();
-			glfwMakeContextCurrent(backup_current_context);
 		}
 	}
 

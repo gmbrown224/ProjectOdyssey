@@ -4,26 +4,23 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Platform">
-      <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Platform\Windows">
-      <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Titus">
       <UniqueIdentifier>{95A9E7B3-0114-9C2A-4A52-4DD0B6FB797F}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Titus\Events">
       <UniqueIdentifier>{D91B562D-C514-757F-EE46-5A04DA9E548B}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Titus\Input">
-      <UniqueIdentifier>{5475F137-C000-5FFC-C911-E2F0351CBBFC}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Titus\Layers">
       <UniqueIdentifier>{B406393C-A0FF-578E-C931-3D13B589379A}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Titus\Logging">
       <UniqueIdentifier>{2B4FBDE2-9765-BB78-E0DC-469A4C328C00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Titus\Window">
+      <UniqueIdentifier>{DC7C6C56-C875-8BA8-F1A7-702DDDFF6AB4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Titus\Window\Input">
+      <UniqueIdentifier>{DB61EF46-C75B-1899-B0C8-AEA99C617E05}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -48,12 +45,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
-      <Filter>src\Platform\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
-      <Filter>src\Platform\Windows</Filter>
-    </ClInclude>
     <ClInclude Include="src\TEpch.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -81,15 +72,6 @@
     <ClInclude Include="src\Titus\Events\MouseEvent.h">
       <Filter>src\Titus\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Titus\Input\Input.h">
-      <Filter>src\Titus\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Titus\Input\KeyCodes.h">
-      <Filter>src\Titus\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Titus\Input\MouseCodes.h">
-      <Filter>src\Titus\Input</Filter>
-    </ClInclude>
     <ClInclude Include="src\Titus\Layers\ImGuiLayer.h">
       <Filter>src\Titus\Layers</Filter>
     </ClInclude>
@@ -102,8 +84,23 @@
     <ClInclude Include="src\Titus\Logging\Log.h">
       <Filter>src\Titus\Logging</Filter>
     </ClInclude>
-    <ClInclude Include="src\Titus\Window.h">
-      <Filter>src\Titus</Filter>
+    <ClInclude Include="src\Titus\Window\Input\GamepadCodes.h">
+      <Filter>src\Titus\Window\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Titus\Window\Input\Input.h">
+      <Filter>src\Titus\Window\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Titus\Window\Input\KeyCodes.h">
+      <Filter>src\Titus\Window\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Titus\Window\Input\MouseCodes.h">
+      <Filter>src\Titus\Window\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Titus\Window\Input\Scancodes.h">
+      <Filter>src\Titus\Window\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Titus\Window\Window.h">
+      <Filter>src\Titus\Window</Filter>
     </ClInclude>
     <ClInclude Include="vendor\glm\glm\common.hpp">
       <Filter>vendor\glm\glm</Filter>
@@ -1361,12 +1358,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
-      <Filter>src\Platform\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
-      <Filter>src\Platform\Windows</Filter>
-    </ClCompile>
     <ClCompile Include="src\TEpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
