@@ -1398,4 +1398,7 @@
       <Filter>src\Titus\Logging</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="vendor\imgui\bin\Debug-windows-x86_64\imgui\imgui.lib" />
+  </ItemGroup>
 </Project>
