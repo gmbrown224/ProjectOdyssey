@@ -1,17 +1,19 @@
 # Titus Engine
 
-My custom game engine built in C++ using OpenGL for rendering.
+TITEN is a cross-platform C++ engine that is currently in development.
 
 ## Specifications
 
 ### Dependencies
-* [Glad](https://glad.dav1d.de/)
-* [GLFW](https://github.com/glfw/glfw)
 * [glm](https://github.com/g-truc/glm)
 * [imgui](https://github.com/ocornut/imgui)
+* [MoltenVK](https://github.com/KhronosGroup/MoltenVK)
 * [Premake](https://github.com/premake/premake-core)
+* [SDL3](https://github.com/libsdl-org/SDL)
 * [spdlog](https://github.com/gabime/spdlog)
 * [stb](https://github.com/nothings/stb)
+* [Vulkan-Headers](https://github.com/KhronosGroup/Vulkan-Headers)
+* [Vulkan-Loader](https://github.com/KhronosGroup/Vulkan-Loader)
 
 ## Author
 
