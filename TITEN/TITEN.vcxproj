@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>TE_PLATFORM_WINDOWS;_WINDLL;TE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Titus-Engine\src;..\Titus-Engine\vendor\imgui;..\Titus-Engine\vendor\SDL\include;..\Titus-Engine\vendor\spdlog\include;..\Titus-Engine\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Titus-Engine\src;..\Titus-Engine\vendor\glm;..\Titus-Engine\vendor\imgui;..\Titus-Engine\vendor\SDL\include;..\Titus-Engine\vendor\spdlog\include;..\Titus-Engine\vendor\Vulkan-Headers\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -97,7 +97,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>TE_PLATFORM_WINDOWS;_WINDLL;TE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Titus-Engine\src;..\Titus-Engine\vendor\imgui;..\Titus-Engine\vendor\SDL\include;..\Titus-Engine\vendor\spdlog\include;..\Titus-Engine\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Titus-Engine\src;..\Titus-Engine\vendor\glm;..\Titus-Engine\vendor\imgui;..\Titus-Engine\vendor\SDL\include;..\Titus-Engine\vendor\spdlog\include;..\Titus-Engine\vendor\Vulkan-Headers\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -119,7 +119,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>TE_PLATFORM_WINDOWS;_WINDLL;TE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Titus-Engine\src;..\Titus-Engine\vendor\imgui;..\Titus-Engine\vendor\SDL\include;..\Titus-Engine\vendor\spdlog\include;..\Titus-Engine\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Titus-Engine\src;..\Titus-Engine\vendor\glm;..\Titus-Engine\vendor\imgui;..\Titus-Engine\vendor\SDL\include;..\Titus-Engine\vendor\spdlog\include;..\Titus-Engine\vendor\Vulkan-Headers\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>

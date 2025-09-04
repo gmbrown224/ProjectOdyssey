@@ -1,41 +1,27 @@
 #pragma once
 
 #include "SDL3/SDL.h"
+#include "SDL3/SDL_vulkan.h"
+#include "Titus/Logging/Log.h"
 
 namespace Titus {
 
 	class TITUS_API Window
 	{
 	public:
-		Window(int width, int height, const std::string& title, Uint32 flags = SDL_WINDOW_OPENGL) : m_Width(width), m_Height(height)
+		Window(int width, int height, const std::string& title, Uint32 flags) : m_Width(width), m_Height(height)
 		{
-			m_Window = SDL_CreateWindow(title.c_str(), width, height, flags);
+			m_Window = SDL_CreateWindow(title.c_str(), m_Width, m_Height, flags);
 
 			if (!m_Window) {
-				SDL_Log("SDL_CreateWindow Error: ", SDL_GetError());
+				TE_CORE_ERROR("SDL_CreateWindow Error: {0}", SDL_GetError());
 			}
-
-			m_GLContext = SDL_GL_CreateContext(m_Window);
 
 			SDL_SetWindowTitle(m_Window, title.c_str());
-
-			/*SDL_Surface* icon = SDLImage_Load("C:\\Users\\gramb\\source\\repos\\Titus-Engine\\Titus-Engine\\src\\Assets\\Logos\\Spartan.png");
-			if (!icon) {
-				SDL_Log("Failed to load icon PNG: %s", SDLImage_GetError());
-				return;
-			}
-
-			SDL_SetWindowIcon(m_Window, icon);
-			SDL_DestroySurface(icon);*/
 		}
 
 		virtual ~Window() 
 		{
-			if (m_GLContext) {
-				SDL_GL_DestroyContext(m_GLContext);
-				m_GLContext = nullptr;
-			}
-
 			if (m_Window) {
 				SDL_DestroyWindow(m_Window);
 				m_Window = nullptr;
@@ -47,9 +33,16 @@ namespace Titus {
 
 		// Accessors
 		SDL_Window* GetNativeWindow() const { return m_Window; }
-		SDL_GLContext GetGLContext() const { return m_GLContext; }
 		int GetWidth() const { return m_Width; }
 		int GetHeight() const { return m_Height; }
+
+		// Vulkan
+		bool CreateVulkanSurface(VkInstance instance, const VkAllocationCallbacks* allocator, VkSurfaceKHR* surface) const
+		{
+			if (!m_Window) return false;
+
+			return SDL_Vulkan_CreateSurface(m_Window, instance, allocator, surface);
+		}
 
 		// Utilities
 		void SetSize(int width, int height) 
@@ -67,7 +60,6 @@ namespace Titus {
 
 	private: 
 		SDL_Window* m_Window = nullptr;
-		SDL_GLContext m_GLContext = nullptr;
 		int m_Width = 0;
 		int m_Height = 0;
 	};

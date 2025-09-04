@@ -16,6 +16,12 @@
     <Filter Include="src\Titus\Logging">
       <UniqueIdentifier>{2B4FBDE2-9765-BB78-E0DC-469A4C328C00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Titus\Rendering">
+      <UniqueIdentifier>{2231381B-8E92-1529-1700-5CDB83604CE8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Titus\Rendering\Resources">
+      <UniqueIdentifier>{0CA9DAD9-78C1-C103-416E-519DAD45569D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Titus\Window">
       <UniqueIdentifier>{DC7C6C56-C875-8BA8-F1A7-702DDDFF6AB4}</UniqueIdentifier>
     </Filter>
@@ -83,6 +89,9 @@
     </ClInclude>
     <ClInclude Include="src\Titus\Logging\Log.h">
       <Filter>src\Titus\Logging</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Titus\Rendering\Resources\ShaderCompiler.h">
+      <Filter>src\Titus\Rendering\Resources</Filter>
     </ClInclude>
     <ClInclude Include="src\Titus\Window\Input\GamepadCodes.h">
       <Filter>src\Titus\Window\Input</Filter>

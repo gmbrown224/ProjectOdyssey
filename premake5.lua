@@ -46,7 +46,8 @@ project "Titus-Engine"
 	}
 
 	libdirs {
-		"Titus-Engine/vendor/SDL/build/Release"
+		"Titus-Engine/vendor/SDL/build/Release",
+		"C:/VulkanSDK/1.4.321.1/Lib"
 	}
 
 	files
@@ -64,14 +65,16 @@ project "Titus-Engine"
 		"%{IncludeDir.imgui}",
 		"%{prj.name}/vendor/SDL/include",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/vendor/stb"
+		"%{prj.name}/vendor/stb",
+		"%{prj.name}/vendor/Vulkan-Headers/include"
 	}
 
 	links 
 	{ 
 		"imgui",
 		"SDL3",
-		"opengl32.lib"
+		"opengl32.lib",
+		"vulkan-1.lib"
 	}
 
 	buildoptions
@@ -133,10 +136,11 @@ project "TITEN"
 	includedirs
 	{
 		"Titus-Engine/src",
+		"Titus-Engine/vendor/glm",
 		"Titus-Engine/vendor/imgui",
 		"Titus-Engine/vendor/SDL/include",
 		"Titus-Engine/vendor/spdlog/include",
-		"Titus-Engine/vendor/glm"
+		"Titus-Engine/vendor/Vulkan-Headers/include"
 	}
 
 	links

@@ -80,7 +80,7 @@
       <PrecompiledHeaderFile>TEpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;TE_PLATFORM_WINDOWS;TE_ENABLE_ASSERTS;TE_BUILD_DLL;_WINDLL;TE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\glm;vendor\imgui;vendor\SDL\include;vendor\spdlog\include;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\glm;vendor\imgui;vendor\SDL\include;vendor\spdlog\include;vendor\stb;vendor\Vulkan-Headers\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -91,8 +91,8 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>vendor\SDL\build\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL3.lib;opengl32.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor\SDL\build\Release;C:\VulkanSDK\1.4.321.1\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\bin\Debug-windows-x86_64\Titus-Engine\Titus-Engine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -107,7 +107,7 @@ copy /B /Y ..\Titus-Engine\vendor\SDL\build\Release\SDL3.dll ..\bin\Debug-window
       <PrecompiledHeaderFile>TEpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;TE_PLATFORM_WINDOWS;TE_ENABLE_ASSERTS;TE_BUILD_DLL;_WINDLL;TE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\glm;vendor\imgui;vendor\SDL\include;vendor\spdlog\include;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\glm;vendor\imgui;vendor\SDL\include;vendor\spdlog\include;vendor\stb;vendor\Vulkan-Headers\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -122,8 +122,8 @@ copy /B /Y ..\Titus-Engine\vendor\SDL\build\Release\SDL3.dll ..\bin\Debug-window
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>vendor\SDL\build\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL3.lib;opengl32.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor\SDL\build\Release;C:\VulkanSDK\1.4.321.1\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\bin\Release-windows-x86_64\Titus-Engine\Titus-Engine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -138,7 +138,7 @@ copy /B /Y ..\Titus-Engine\vendor\SDL\build\Release\SDL3.dll ..\bin\Release-wind
       <PrecompiledHeaderFile>TEpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;TE_PLATFORM_WINDOWS;TE_ENABLE_ASSERTS;TE_BUILD_DLL;_WINDLL;TE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\glm;vendor\imgui;vendor\SDL\include;vendor\spdlog\include;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\glm;vendor\imgui;vendor\SDL\include;vendor\spdlog\include;vendor\stb;vendor\Vulkan-Headers\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -153,8 +153,8 @@ copy /B /Y ..\Titus-Engine\vendor\SDL\build\Release\SDL3.dll ..\bin\Release-wind
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>vendor\SDL\build\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL3.lib;opengl32.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor\SDL\build\Release;C:\VulkanSDK\1.4.321.1\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\bin\Dist-windows-x86_64\Titus-Engine\Titus-Engine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -177,6 +177,7 @@ copy /B /Y ..\Titus-Engine\vendor\SDL\build\Release\SDL3.dll ..\bin\Dist-windows
     <ClInclude Include="src\Titus\Layers\Layer.h" />
     <ClInclude Include="src\Titus\Layers\LayerStack.h" />
     <ClInclude Include="src\Titus\Logging\Log.h" />
+    <ClInclude Include="src\Titus\Rendering\Resources\ShaderCompiler.h" />
     <ClInclude Include="src\Titus\Window\Input\GamepadCodes.h" />
     <ClInclude Include="src\Titus\Window\Input\Input.h" />
     <ClInclude Include="src\Titus\Window\Input\KeyCodes.h" />
