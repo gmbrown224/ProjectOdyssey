@@ -2,6 +2,7 @@
 
 #include "Application.h"
 #include "Titus/Logging/Log.h"
+#include "SDL3/SDL_vulkan.h"
 
 namespace Titus
 {
@@ -20,7 +21,9 @@ namespace Titus
 			return;
 		}
 
-		m_Window = std::make_unique<Window>(1280, 720, "TITEN", SDL_WINDOW_OPENGL);
+		SDL_Vulkan_LoadLibrary(nullptr);
+
+		m_Window = std::make_unique<Window>(1280, 720, "TITEN", SDL_WINDOW_VULKAN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIDDEN);
 
 		if (!m_Window) {
 			TE_CORE_ERROR("SDL_CreateWindow Error: ", SDL_GetError());
@@ -49,8 +52,8 @@ namespace Titus
 
 	void Application::OnEvent(Event& e)
 	{
-		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+		/*EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));*/
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
@@ -62,8 +65,19 @@ namespace Titus
 
 	void Application::Run()
 	{
+		m_Window->Show();
+
 		while (m_Running)
 		{
+			for (SDL_Event event; SDL_PollEvent(&event); )
+			{
+				if (event.type == SDL_EVENT_QUIT)
+				{
+					m_Running = false;
+				}
+				// Handle other events as needed
+			}
+
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
 				layer->OnImGuiRender();

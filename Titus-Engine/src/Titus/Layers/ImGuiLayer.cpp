@@ -5,7 +5,7 @@
 
 #include "imgui.h"
 #include "imgui_internal.h"
-#include "backends/imgui_impl_opengl3.h"
+//#include "backends/imgui_impl_vulkan.h"
 #include "backends/imgui_impl_sdl3.h"
 
 namespace Titus
@@ -39,24 +39,25 @@ namespace Titus
 
 		Application& app = Application::Get();
 		SDL_Window* window = static_cast<SDL_Window*>(app.GetWindow().GetNativeWindow());
-		SDL_GLContext glContext = app.GetWindow().GetGLContext();
 
-		ImGui_ImplSDL3_InitForOpenGL(window, glContext);
-		ImGui_ImplOpenGL3_Init("#version 410");
+		ImGui_ImplSDL3_InitForVulkan(window);
+
+		//ImGui_ImplVulkan_InitInfo init_info = {};
+		//ImGui_ImplVulkan_Init(&init_info);
 	}
 
 	void ImGuiLayer::OnDetach() 
 	{
-		ImGui_ImplOpenGL3_Shutdown();
-		ImGui_ImplSDL3_Shutdown();
+		//ImGui_ImplVulkan_Shutdown();
+		//ImGui_ImplSDL3_Shutdown();
 
 		ImGui::DestroyContext();
 	}
 
 	void ImGuiLayer::Begin() 
 	{
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplSDL3_NewFrame();
+		//ImGui_ImplVulkan_NewFrame();
+		//ImGui_ImplSDL3_NewFrame();
 
 		ImGui::NewFrame();
 	}
@@ -68,7 +69,9 @@ namespace Titus
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());
 
 		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+		ImDrawData* draw_data = ImGui::GetDrawData();
+
+		//ImGui_ImplVulkan_RenderDrawData(draw_data, nullptr);
 
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
 		{
