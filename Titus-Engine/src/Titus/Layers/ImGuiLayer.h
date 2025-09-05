@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Titus/Core.h"
 #include "Titus/Layers/Layer.h"
 
 namespace Titus

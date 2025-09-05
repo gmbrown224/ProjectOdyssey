@@ -2,18 +2,20 @@
 
 #include "TEpch.h"
 
-#ifdef TE_PLATFORM_WINDOWS
-	#ifdef TE_BUILD_DLL
-		#define TITUS_API _declspec(dllexport)
+#if defined(_WIN32)
+	#if defined(TE_BUILD_DLL)
+		#define TITUS_API __declspec(dllexport)
+	#elif defined(TE_USE_DLL)
+		#define TITUS_API __declspec(dllimport)
 	#else
-		#define TITUS_API _declspec(dllimport)
+		#define TITUS_API
 	#endif
 #else
-	#error Titus only supports Windows!
+	#define TITUS_API
 #endif
 
-#ifdef TE_DEBUG
-	#define TE_ENABLE_ASSERTS
+#ifndef TE_API
+	#define TE_API TITUS_API
 #endif
 
 #ifdef TE_ENABLE_ASSERTS

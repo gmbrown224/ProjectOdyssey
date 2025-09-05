@@ -19,9 +19,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["imgui"] = "Titus-Engine/vendor/imgui"
 IncludeDir["glm"] = "Titus-Engine/vendor/glm"
+IncludeDir["SDL"] = "Titus-Engine/vendor/SDL"
 
 group "Dependencies"
 	include "Titus-Engine/vendor/imgui"
+	include "Titus-Engine/vendor/SDL"
 
 group ""
 
@@ -46,7 +48,6 @@ project "Titus-Engine"
 	}
 
 	libdirs {
-		"Titus-Engine/vendor/SDL/build/Release",
 		"C:/VulkanSDK/1.4.321.1/Lib"
 	}
 
@@ -63,7 +64,7 @@ project "Titus-Engine"
 		"%{prj.name}/src",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.imgui}",
-		"%{prj.name}/vendor/SDL/include",
+		"%{IncludeDir.SDL}/include",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/vendor/stb",
 		"%{prj.name}/vendor/Vulkan-Headers/include"
@@ -72,14 +73,16 @@ project "Titus-Engine"
 	links 
 	{ 
 		"imgui",
-		"SDL3",
-		"opengl32.lib",
-		"vulkan-1.lib"
+		"SDL"
 	}
 
 	buildoptions
 	{
 		"/utf-8"
+	}
+
+	postbuildcommands {
+		'copy /Y "%{cfg.targetdir}\\Titus-Engine.dll" "%{wks.location}\\bin\\' .. outputdir .. '\\TITEN\\" > nul'
 	}
 
 	filter "system:windows"
@@ -89,15 +92,7 @@ project "Titus-Engine"
 		{
 			"TE_PLATFORM_WINDOWS",
 			"TE_ENABLE_ASSERTS",
-			"TE_BUILD_DLL",
-			"_WINDLL"
-		}
-
-		postbuildcommands
-		{
-			"copy /B /Y ..\\bin\\" .. outputdir .. "\\Titus-Engine\\Titus-Engine.dll ..\\bin\\" .. outputdir .. "\\TITEN\\ > nul",
-			"copy /B /Y ..\\Titus-Engine\\vendor\\SDL\\build\\Release\\SDL3.dll ..\\bin\\" .. outputdir .. "\\Titus-Engine\\ > nul",
-			"copy /B /Y ..\\Titus-Engine\\vendor\\SDL\\build\\Release\\SDL3.dll ..\\bin\\" .. outputdir .. "\\TITEN\\ > nul"
+			"TE_BUILD_DLL"
 		}
 
 	filter "configurations:Debug"
@@ -136,14 +131,17 @@ project "TITEN"
 	includedirs
 	{
 		"Titus-Engine/src",
-		"Titus-Engine/vendor/glm",
 		"Titus-Engine/vendor/imgui",
 		"Titus-Engine/vendor/SDL/include",
-		"Titus-Engine/vendor/spdlog/include",
-		"Titus-Engine/vendor/Vulkan-Headers/include"
+		"Titus-Engine/vendor/spdlog/include"
 	}
 
 	links
+	{
+		"Titus-Engine"
+	}
+
+	dependson
 	{
 		"Titus-Engine"
 	}
@@ -158,8 +156,7 @@ project "TITEN"
 
 		defines
 		{
-			"TE_PLATFORM_WINDOWS",
-			"_WINDLL"
+			"TE_PLATFORM_WINDOWS"
 		}
 
 	filter "configurations:Debug"

@@ -15,18 +15,19 @@ namespace Titus
 		TE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
-		if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0)
+		if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		{
-			TE_CORE_ERROR("Failed to initialize SDL: {0}", SDL_GetError());
+			TE_CORE_CRITICAL("Failed to initialize SDL: {0}", SDL_GetError());
+			m_Running = false;
 			return;
 		}
 
-		SDL_Vulkan_LoadLibrary(nullptr);
+		m_Window = std::make_unique<Window>(1280, 720, "TITEN", SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIDDEN);
 
-		m_Window = std::make_unique<Window>(1280, 720, "TITEN", SDL_WINDOW_VULKAN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIDDEN);
-
-		if (!m_Window) {
-			TE_CORE_ERROR("SDL_CreateWindow Error: ", SDL_GetError());
+		if (!m_Window || !m_Window->GetNativeWindow()) {
+			TE_CORE_CRITICAL("SDL_CreateWindow failed: {}", SDL_GetError());
+			m_Running = false;
+			return;
 		}
 
 		// m_Window->SetEventCallback(TE_BIND_EVENT_FN(OnEvent));
@@ -65,17 +66,21 @@ namespace Titus
 
 	void Application::Run()
 	{
+		if (!m_Running || !m_Window || !m_Window->GetNativeWindow()) {
+			TE_CORE_CRITICAL("App not initialized; aborting Run()");
+			return;
+		}
+
 		m_Window->Show();
 
 		while (m_Running)
 		{
-			for (SDL_Event event; SDL_PollEvent(&event); )
+			SDL_Event event;
+			while (SDL_PollEvent(&event))
 			{
-				if (event.type == SDL_EVENT_QUIT)
-				{
+				if (event.type == SDL_EVENT_QUIT) {
 					m_Running = false;
 				}
-				// Handle other events as needed
 			}
 
 			m_ImGuiLayer->Begin();

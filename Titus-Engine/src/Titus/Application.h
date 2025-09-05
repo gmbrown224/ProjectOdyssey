@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core.h"
+#include "Titus/Core.h"
 
 #include "Events/ApplicationEvent.h"
 #include "Layers/LayerStack.h"
