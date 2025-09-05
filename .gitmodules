@@ -13,7 +13,7 @@
 	url = https://github.com/g-truc/glm
 [submodule "Titus-Engine/vendor/SDL"]
 	path = Titus-Engine/vendor/SDL
-	url = https://github.com/libsdl-org/SDL
+	url = https://github.com/gmbrown224/Titus-Engine-SDL
 [submodule "Titus-Engine/vendor/Vulkan-Loader"]
 	path = Titus-Engine/vendor/Vulkan-Loader
 	url = https://github.com/gmbrown224/Titus-Engine-Vulkan-Loader
