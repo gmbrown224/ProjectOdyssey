@@ -23,3 +23,18 @@
 [submodule "Titus-Engine/vendor/Vulkan-Headers"]
 	path = Titus-Engine/vendor/Vulkan-Headers
 	url = https://github.com/KhronosGroup/Vulkan-Headers
+[submodule "Titus-Engine/vendor/GLFW"]
+	path = Titus-Engine/vendor/GLFW
+	url = https://github.com/glfw/glfw
+[submodule "Titus-Engine/vendor/EnTT"]
+	path = Titus-Engine/vendor/EnTT
+	url = https://github.com/skypjack/entt
+[submodule "Titus-Engine/vendor/Assimp"]
+	path = Titus-Engine/vendor/Assimp
+	url = https://github.com/assimp/assimp
+[submodule "Titus-Engine/vendor/miniaudio"]
+	path = Titus-Engine/vendor/miniaudio
+	url = https://github.com/mackron/miniaudio
+[submodule "Titus-Engine/vendor/asio"]
+	path = Titus-Engine/vendor/asio
+	url = https://github.com/chriskohlhoff/asio
